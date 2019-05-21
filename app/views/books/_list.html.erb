@@ -1,0 +1,27 @@
+<div class="profile-container">
+	<h3 class="profilr-name">
+		name.
+		<%= user.name %>
+	</h3>
+	<%= attachment_image_tag user,
+	 :profile_image, :fill, 100, 100,
+	  format: 'jpeg',
+	   fallback: "no_image.jpg",
+	    size: "100x100",
+	     class: "img-circel pull-left profile-img" %>
+	<h3>introduction<h3>
+	<% if user.id == current_user.id %>
+	<p><%= link_to "プロフィール編集" , edit_user_path(user), class: "pull-right" %></p>
+	<% end %>
+</div>
+
+
+<h2>New book</h2>
+<%= form_for(book) do |f| %>
+<h3>Title</h3>
+<%= f.text_field :title %>
+<h3>Opinion</h3>
+<%= f.text_area :body %>
+<%= f.submit 'Create Book' %>
+<% end %>
+

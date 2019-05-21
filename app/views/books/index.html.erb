@@ -1,0 +1,29 @@
+<%= render 'books/list', book: @book, user: @user %>
+
+<div class="continer-fluid masonry-container">
+	<div class="row">
+      <div class="col-md-8 col-sm-offset-2">
+        <div class="masonry-wrapper-cols">
+            <% @books.each do |book| %>
+<div class="book-meta-top">
+	<div class="book-img">
+		<%= attachment_image_tag book.user,
+		:profile_image, :fill, 35, 35,
+		format: 'jpeg', fallback: "no_image.jpg" %>
+	</div>
+	</div>
+	<div class="book-content">
+		<h2 class="book-title"><%= @book.title %></h2>
+		<ul class="meta-info-cell v4 float-wrapper">
+			<li>
+				<i class="fa fa-user"></i>By<a href="#">
+					<%= link_to book.title, book_path(book.id) %></a>
+				</li>
+					<%= book.body %>
+				<% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

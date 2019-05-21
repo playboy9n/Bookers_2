@@ -1,0 +1,17 @@
+<%= render 'books/list', user: @user, book: @book %>
+<h2>Books</h2>
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Opinion</th>
+	</tr>
+		<% @books.each do |b| %>
+	<tr>
+		<td><%= attachment_image_tag b.user,
+		:profile_image, :fill, 35, 35,
+		format: 'jpeg', fallback: "no_image.jpg" %></td>
+		<td><%= b.title %></td>
+		<td><%= b.body %></td>
+	</tr>
+	<% end %>
+</table>

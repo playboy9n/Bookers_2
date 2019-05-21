@@ -1,0 +1,10 @@
+<%= render 'books/list', book: @bookn, user: @user %>
+<h2>Book detail</h2>
+
+<%= attachment_image_tag @book.user,
+		:profile_image, :fill, 35, 35,
+		format: 'jpeg', fallback: "no_image.jpg" %>
+<%= @book.title %>
+<%= @book.body %>
+
+<%= link_to  "Edit", edit_book_path(@book.id) %>
