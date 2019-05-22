@@ -1,3 +1,16 @@
+<% if @user.errors.any? %>
+<div class="alert alert-warning">
+	<ul>
+		<% @user.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3">
 <h2>User info</h2>
 <%= form_for(@user) do |f| %>
 <p>Name
@@ -9,3 +22,6 @@
 	</p>
 	<%= f.submit 'Update User' %>
 	<% end %>
+		</div>
+	</div>
+</div>

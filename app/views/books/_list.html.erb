@@ -1,27 +1,52 @@
-<div class="profile-container">
-	<h3 class="profilr-name">
-		name.
-		<%= user.name %>
-	</h3>
-	<%= attachment_image_tag user,
-	 :profile_image, :fill, 100, 100,
-	  format: 'jpeg',
-	   fallback: "no_image.jpg",
-	    size: "100x100",
-	     class: "img-circel pull-left profile-img" %>
-	<h3>introduction<h3>
-	<% if user.id == current_user.id %>
-	<p><%= link_to "プロフィール編集" , edit_user_path(user), class: "pull-right" %></p>
-	<% end %>
-</div>
+<% if book.errors.any? %>
+	<div class="alert alert-warning">
+		<ul>
+			<% book.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
 
-
-<h2>New book</h2>
-<%= form_for(book) do |f| %>
-<h3>Title</h3>
-<%= f.text_field :title %>
-<h3>Opinion</h3>
-<%= f.text_area :body %>
-<%= f.submit 'Create Book' %>
+		</ul>
+	</div>
 <% end %>
 
+<section class= 'profile-box'>
+<h2>User info</h2>
+	<%= attachment_image_tag user,
+ :profile_image, :fill, 100, 100,
+  format: 'jpeg',
+   fallback: "no_image.jpg",
+    size: "100x100",
+     class: "img-circel pull-left profile-img" %>
+		<table ~~~ style="table-layout:fixed; width:100;" class="table">
+			<colgrpup>
+				<col style="width: 33%">
+				<col  style="width: 66%">
+				<tr>
+			     	<th><p class="profilr-name">name</p></th>
+						<td ~~~  style="word-wrap:break-word;">
+							<%= user.name %>
+						</td>
+				</tr>
+				<tr>
+					<th><p >introduction</p></th>
+						<td ~~ style="word-wrap:break-word;">
+							<%= user.introduction %>
+						</td>
+				</tr>
+			</colgrpup>
+		</table>
+		<% if user.id == current_user.id %>
+			<%= link_to  "", edit_user_path(user), class: "btn btn-default btn-block glyphicon glyphicon-wrench" %>
+		<% end %>
+</section>
+<br>
+<section>
+<h2>New book</h2>
+<%= form_for(book) do |f| %>
+	<h3>Title</h3>
+	<%= f.text_field :title, :size => "36x15" %>
+	<h3>Opinion</h3>
+	<%= f.text_area :body, :size => "35x2" %>
+	<%= f.submit 'Create Book', class: "btn btn-primary btn-block" %>
+<% end %>
+</section>

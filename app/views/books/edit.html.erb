@@ -1,13 +1,20 @@
-<h2>Editing Book</h2>
-<%= form_for(@book) do |f| %>
-	<h3>Title</h3>
-	<%= f.text_field :title %>
-	<h3>Opinion</h3>
-	<%= f.text_area :body %>
-	<%= f.submit 'Update Book' %>
-<% end %>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3"></div>
+		<div class="col-lg-6">
+		<h2>Editing Book</h2>
+		<%= form_for(@book) do |f| %>
+			<h3>Title</h3>
+			<%= f.text_field :title, :size => "77x2" %>
+			<h3>Opinion</h3>
+			<%= f.text_area :body, :size => "76x2" %>
+			<%= f.submit 'Update Book', class: 'btn btn-primary btn-block active' %>
+		<% end %>
 
-<%= link_to 'Show', book_path(@book.id) %>
-<span>|</span>
-<%= link_to 'Back', books_path %>
-
+		<%= link_to 'Show', book_path(@book.id) %>
+		<span>|</span>
+		<%= link_to 'Back', books_path %>
+			<div class="col-lg-1"></div>
+		</div>
+	</div>
+</div>

@@ -1,29 +1,27 @@
-<%= render 'books/list', book: @book, user: @user %>
-
-<div class="continer-fluid masonry-container">
+<div class="container">
 	<div class="row">
-      <div class="col-md-8 col-sm-offset-2">
-        <div class="masonry-wrapper-cols">
-            <% @books.each do |book| %>
-<div class="book-meta-top">
-	<div class="book-img">
-		<%= attachment_image_tag book.user,
-		:profile_image, :fill, 35, 35,
-		format: 'jpeg', fallback: "no_image.jpg" %>
-	</div>
-	</div>
-	<div class="book-content">
-		<h2 class="book-title"><%= @book.title %></h2>
-		<ul class="meta-info-cell v4 float-wrapper">
-			<li>
-				<i class="fa fa-user"></i>By<a href="#">
-					<%= link_to book.title, book_path(book.id) %></a>
-				</li>
-					<%= book.body %>
+		<div class="col-lg-3">
+		<%= render 'books/list', book: @book, user: @user %>
+		</div>
+		<div class="col-lg-9">
+			<h2>Books</h2>
+				<table class="table">
+					<tr>
+						<th>Title</th>
+						<th>Opinion</th>
+					</tr>
+	            <% @books.each do |book| %>
+							<td><%= attachment_image_tag book.user,
+							:profile_image, :fill, 35, 35,
+							format: 'jpeg', fallback: "no_image.jpg",
+							size: "35x35"%></td>
+							<h2 class="book-title"><%= @book.title %></h2>
+							<td><%= link_to book.title, book_path(book.id) %></td>
+
+							<td><%= book.body %></td>
+						</tr>
 				<% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
+			</table>
+		</div>
+	</div>
+</div>
