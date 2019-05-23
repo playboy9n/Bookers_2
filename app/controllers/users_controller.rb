@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+before_action :authenticate_user!
 before_action :correct_user, only: [:edit, :update, :destroy]
+
 	def show
 		@user = User.find(params[:id])
 		@books = @user.books
@@ -38,7 +40,13 @@ private
 	def correct_user
 		user = User.find(params[:id])
 		if current_user  !=  user
-		redirect_to books_path
+		redirect_to user_path(current_user)
+		end
 	end
+	def logged_in_user
+		unless logged_in?
+		flash[:danger] = "Please log in."
+		redirect_to login_url
 	end
+end
 end
